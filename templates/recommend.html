@@ -1,0 +1,107 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book-recommender-system</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: black;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .text-white {
+            color: white;
+        }
+
+        .text-black {
+            color: black;
+        }
+
+        .navbar {
+            border-radius: 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .card-img-top {
+            height: 260px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .navbar a {
+            font-weight: bold;
+            color: black !important;
+        }
+
+        h1 {
+            margin: 40px 0 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: aqua;">
+        <a href="/" class="navbar-brand">My Book-recommender-system</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/recommend">Recommend</a></li>
+            <li class="nav-item"><a class="nav-link" href="/contact">Contract</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white">Recommend Books</h1>
+                <form action="/recommend_books" method='POST'>
+                    <input name="user_input" type="text" class="form-control" placeholder="Enter book title"><br>
+                    <input type="submit" class="btn btn-lg btn-warning btn-block" value="Get Recommendations">
+                </form>
+            </div>
+
+            {% if data %}
+                {% for i in data %}
+                    <div class="col-md-3" style="margin-top: 30px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <img class="card-img-top" src="{{ i[2] }}">
+                                <h2 class="text-black mt-2">{{ i[0] }}</h2>
+                                <h4 class="text-black">{{ i[1] }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% elif not_found %}
+                <div class="col-12 mt-4">
+                    <h3 class="text-white">❌ Book not found. Please try another title.</h3>
+                    <p><a href="/contact" style="color: aqua;">Contact us</a> if you need help.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

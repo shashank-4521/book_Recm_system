@@ -1,0 +1,24 @@
+types of recomender system
+
+1. popularity based 
+2. content based 
+3. collaborative filtering
+4. hybrid based 
+
+popularity:
+                - based on the number of times a product has been viewed or purchased
+                - the more a product is viewed or purchased, the higher its popularity score
+                - can be used to recommend products that are currently trending or in high demand
+                example : amazon best seller list, youtube trending viewed
+
+content based:
+                - based on the attributes or features of a product
+                - the more similar a product is to a user's past purchases or preferences, the higher its recommendation
+                - can be used to recommend products that are similar to a user's past purchases or preferences
+                example : netflix recommendation based on movie genre, music recommendation based on artist style
+
+collaborative filtering:
+                - based on the behavior of other users with similar preferences
+                - the more similar a user's preferences are to another user's preferences, the higher the recommendation
+                - can be used to recommend products that are popular among users with similar preferences
+                example: amazon recommendation based on user reviews, youtube recommendation based on user watch history
